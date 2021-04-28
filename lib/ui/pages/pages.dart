@@ -1,3 +1,4 @@
+import 'package:flutter_application/models/models.dart';
 import 'package:flutter_application/shared/shared.dart';
 import 'package:flutter_application/ui/widgets/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
