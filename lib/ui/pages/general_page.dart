@@ -37,16 +37,23 @@ class GeneralPage extends StatelessWidget {
                       child: Row(
                         children: [
                           onBackButtonPressed != null
-                              ? Container(
-                                  width: defaultMargin,
-                                  height: defaultMargin,
-                                  margin: EdgeInsets.only(
-                                    right: 26,
+                              ? GestureDetector(
+                                  onTap: () {
+                                    if (onBackButtonPressed != null) {
+                                      onBackButtonPressed();
+                                    }
+                                  },
+                                  child: Container(
+                                    width: defaultMargin,
+                                    height: defaultMargin,
+                                    margin: EdgeInsets.only(
+                                      right: 26,
+                                    ),
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/back_arrow.png'))),
                                   ),
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/back_arrow.png'))),
                                 )
                               : SizedBox(),
                           Column(
