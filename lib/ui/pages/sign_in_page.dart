@@ -82,8 +82,8 @@ class _SignInPageState extends State<SignInPage> {
                       color: mainColor,
                       child: Text(
                         'Sign In',
-                        style: GoogleFonts.lato(
-                            color: Colors.white, fontWeight: FontWeight.w500),
+                        style: GoogleFonts.poppins(
+                            color: Colors.black, fontWeight: FontWeight.w500),
                       ),
                     )),
           Container(
@@ -106,7 +106,7 @@ class _SignInPageState extends State<SignInPage> {
                       color: greyColor,
                       child: Text(
                         'Create New Account',
-                        style: GoogleFonts.lato(
+                        style: GoogleFonts.poppins(
                             color: Colors.white, fontWeight: FontWeight.w500),
                       ),
                     )),

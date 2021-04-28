@@ -62,12 +62,12 @@ class GeneralPage extends StatelessWidget {
                             children: [
                               Text(
                                 title,
-                                style: GoogleFonts.lato(
+                                style: GoogleFonts.poppins(
                                     fontSize: 22, fontWeight: FontWeight.w500),
                               ),
                               Text(
                                 subtitle,
-                                style: GoogleFonts.lato(
+                                style: GoogleFonts.poppins(
                                     color: '8D92A3'.toColor(),
                                     fontWeight: FontWeight.w300),
                               ),
