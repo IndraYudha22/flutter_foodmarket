@@ -48,8 +48,9 @@ class _FoodPageState extends State<FoodPage> {
                   )
                 ],
               ),
-            )
+            ),
             //List Of Food
+            FoodCard()
             //List Of Food (Tabs)
           ],
         )
