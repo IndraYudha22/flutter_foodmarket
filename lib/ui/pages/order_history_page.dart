@@ -29,6 +29,8 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
           buttonTap1: () {},
           buttonTitle1: 'Find Foods');
     } else {
+      double listItemWidth =
+          MediaQuery.of(context).size.width - 2 * defaultMargin;
       return ListView(
         children: [
           Column(
@@ -65,7 +67,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                     CustomTabBar(
                       titles: ['In Progress', 'Past Orders'],
                       selectedIndex: selectedIndex,
-                      onTap: (index){
+                      onTap: (index) {
                         setState(() {
                           selectedIndex = index;
                         });
@@ -75,7 +77,15 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                       height: 16,
                     ),
                     Column(
-                      children: (selectedIndex == 0 ? inProgress : past).map((e) => Text(e.food.name)).toList(),
+                      children: (selectedIndex == 0 ? inProgress : past)
+                          .map((e) => Padding(
+                            padding: const EdgeInsets.only(right: defaultMargin, left: defaultMargin, bottom: 16),
+                            child: OrderListItem(
+                                  transaction: e,
+                                  itemWidth: listItemWidth,
+                                ),
+                          ))
+                          .toList(),
                     )
                   ],
                 ),
