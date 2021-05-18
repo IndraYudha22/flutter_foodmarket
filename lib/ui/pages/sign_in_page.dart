@@ -110,6 +110,7 @@ class _SignInPageState extends State<SignInPage> {
                             color: Colors.white, fontWeight: FontWeight.w500),
                       ),
                     )),
+
         ],
       ),
     );
