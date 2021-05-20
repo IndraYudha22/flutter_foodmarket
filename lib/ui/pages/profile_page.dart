@@ -36,17 +36,17 @@ class _ProfilePageState extends State<ProfilePage> {
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: NetworkImage(mockUser.picturePath),
+                                image: NetworkImage((BlocProvider.of<UserCubit>(context).state as UserLoaded).user.picturePath),
                                 fit: BoxFit.cover)),
                       ),
                     ),
                     Text(
-                      mockUser.name,
+                      (BlocProvider.of<UserCubit>(context).state as UserLoaded).user.name,
                       style: GoogleFonts.poppins(
                           fontSize: 18, fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      mockUser.email,
+                      (BlocProvider.of<UserCubit>(context).state as UserLoaded).user.email,
                       style:
                           greyFontStyle.copyWith(fontWeight: FontWeight.w300),
                     )
