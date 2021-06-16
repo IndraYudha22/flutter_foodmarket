@@ -56,7 +56,7 @@ class _FoodPageState extends State<FoodPage> {
                 ],
               ),
             ),
-            //List Of Food
+            // todo : List Of Food
             Container(
               height: 258,
               width: double.infinity,
@@ -69,7 +69,7 @@ class _FoodPageState extends State<FoodPage> {
                             children: state.foods
                                 .map((e) => Padding(
                                       padding: EdgeInsets.only(
-                                          left: (e == mockFoods.first)
+                                          left: (e == state.foods.first)
                                               ? defaultMargin
                                               : 0,
                                           right: defaultMargin),

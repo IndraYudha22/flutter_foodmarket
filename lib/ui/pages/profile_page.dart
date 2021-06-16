@@ -1,12 +1,32 @@
 part of 'pages.dart';
 
 class ProfilePage extends StatefulWidget {
+  final User user;
+
+  ProfilePage({this.user});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
   int selectedIndex = 0;
+  List<String> selectMenu;
+  String selectedMenu;
+
+  @override
+  void initState() {
+    super.initState();
+
+    selectMenu = [
+      'Edit Profile',
+      'Home Address',
+      'Security',
+      'Payment',
+      'Log Out'
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +56,25 @@ class _ProfilePageState extends State<ProfilePage> {
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: NetworkImage((BlocProvider.of<UserCubit>(context).state as UserLoaded).user.picturePath),
+                                image: NetworkImage(
+                                    (BlocProvider.of<UserCubit>(context).state
+                                            as UserLoaded)
+                                        .user
+                                        .picturePath),
                                 fit: BoxFit.cover)),
                       ),
                     ),
                     Text(
-                      (BlocProvider.of<UserCubit>(context).state as UserLoaded).user.name,
+                      (BlocProvider.of<UserCubit>(context).state as UserLoaded)
+                          .user
+                          .name,
                       style: GoogleFonts.poppins(
                           fontSize: 18, fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      (BlocProvider.of<UserCubit>(context).state as UserLoaded).user.email,
+                      (BlocProvider.of<UserCubit>(context).state as UserLoaded)
+                          .user
+                          .email,
                       style:
                           greyFontStyle.copyWith(fontWeight: FontWeight.w300),
                     )
@@ -72,12 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   Column(
                     children: ((selectedIndex == 0)
-                            ? [
-                                'Edit Profile',
-                                'Home Address',
-                                'Security',
-                                'Payment'
-                              ]
+                            ? selectMenu
                             : [
                                 'Rate App',
                                 'Help Center',
@@ -97,12 +120,20 @@ class _ProfilePageState extends State<ProfilePage> {
                                     e,
                                     style: blackFontStyle3,
                                   ),
-                                  SizedBox(
-                                    height: 24,
-                                    width: 24,
-                                    child: Image.asset(
-                                      'assets/right_arrow.png',
-                                      fit: BoxFit.contain,
+                                  GestureDetector(
+                                    onTap: () async {
+                                      if (e == 'Log Out') {
+                                        await BlocProvider.of<UserCubit>(context).logOut(widget.user);
+                                        Get.to(SignInPage());
+                                      }
+                                    },
+                                    child: SizedBox(
+                                      height: 24,
+                                      width: 24,
+                                      child: Image.asset(
+                                        'assets/right_arrow.png',
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   )
                                 ],
